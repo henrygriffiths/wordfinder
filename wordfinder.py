@@ -1,7 +1,18 @@
 letters = {x: 0 for x in [x for x in 'abcdefghijklmnopqrstuvwxyz']}
 
+lastinput = ''
+try:
+    with open('lastinput.txt') as f:
+        lastinput = f.readlines()[0].strip()
+except:
+    pass
+inputletters = input("Enter Valid Letters (Blank for {}): ".format(lastinput)).lower()
+if inputletters == '':
+    inputletters = lastinput
+else:
+    with open('lastinput.txt', "w") as f:
+        f.write(inputletters)
 
-inputletters = input("Enter Valid Letters: ").lower()
 
 inputminletters = input("Enter Minimum Letters (Blank for 3): ")
 if inputminletters == '':
